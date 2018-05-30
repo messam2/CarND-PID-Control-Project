@@ -35,8 +35,8 @@ int main()
   PID pid_steer;
   PID pid_throttle;
   // TODO: Initialize the pid variable.
-  pid_steer.Init(0.1,0.0,10);
-  pid_throttle.Init(10.0,0.0,0.0);
+  pid_steer.Init(0.14,0.00,3.1);
+  pid_throttle.Init(0.3,0.0,0.0);
 
   h.onMessage([&pid_steer, &pid_throttle](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -70,7 +70,7 @@ int main()
           // Saturate steer_value and throttle_value
           if (steer_value > 1){steer_value = 1;}
           if (steer_value < -1){steer_value = -1;}
-          if (throttle_value < 0.4){throttle_value = 0.4;}
+          if (throttle_value < 0.3){throttle_value = 0.3;}
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
