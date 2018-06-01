@@ -2,6 +2,22 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Introduction
+
+A proportional–integral–derivative controller (PID) is a control loop feedback mechanism widely used in control systems and a variety of other applications. A PID controller continuously calculates an error value as the difference between a desired setpoint and a measured process variable and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively) which give the controller its name.
+
+## PID components effect
+
+* The *P* (proportional) component
+  * It is the most influential component on the behavior of the vehicle. It results in the counter-steer effect that is *proportional* and opposite to the cte. If the cte is to the right, a left steering command is given, and vice-versa.
+* The *I* (integral) component
+  * It takes into account the integral of cte over the past time period. It corrects systematic bias and constant deviation which can prevent the controller from reaching the center of the reference trajectory, for example, if a zero steering angle does not map to a straight line steering
+* The *D* (differential) component
+  * It is proportional to the rate of change of cte, and is used to reduce oscillations and overshooting caused by the proportional component.
+  
+## PID tuning
+
+Parameter tuning was manually done. Tuning started with a P-only controller. After settling for the K_p value that kept the car within the track, a gradual increase in K_d was the next most sensible step. K_d was increased until oscillations and overshoot were deminished. The effect of K_i was negligible in this application since the steering drift is very small in the simulator.
 
 ## Dependencies
 
